@@ -1,13 +1,15 @@
 ﻿namespace PagedSource
 {
-    using System;
-
     using System.Collections;
     using System.Collections.Generic;
+
+    using System.Runtime;
     using System.Runtime.Serialization;
 
+    using System;
+
     /// <summary>
-    /// Paged data source.
+    /// Paged items source.
     /// </summary>
     [Serializable]
     public class PagedSource<T> where T : new()
@@ -15,31 +17,31 @@
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets posts.
+        /// Gets or sets items.
         /// </summary>
         [DataMember]
         public List<T> Items { get; set; }
 
         /// <summary>
-        /// Check, is it the first page.
+        /// Gets is first page or not.
         /// </summary>
         [DataMember]
         public bool FirstPage { get { return PageIndex == 1; } }
 
         /// <summary>
-        /// Check, is it the last (index equals count) page.
+        /// Gets is first page (index equals count) or not.
         /// </summary>
         [DataMember]
         public bool LastPage { get { return PageIndex >= PageCount; } }
 
         /// <summary>
-        /// Gets or sets pages count.
+        /// Gets or sets page count.
         /// </summary>
         [DataMember]
         public int PageCount { get; set; }
 
         /// <summary>
-        /// Gets or sets posts total count.
+        /// Gets or sets total count.
         /// </summary>
         [DataMember]
         public int TotalCount { get; set; }
@@ -60,7 +62,7 @@
         public PagedSource() { }
 
         /// <summary>
-        /// Constructor with parameters.
+        /// Constructor with specified parameters.
         /// </summary>
         public PagedSource(List<T> items, int idx, int size, int total)
         {
